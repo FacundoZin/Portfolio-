@@ -153,4 +153,17 @@
   .animate-marquee:hover {
     animation-play-state: paused;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-marquee:hover,
+    .animate-bounce,
+    .animate-fade-in-up {
+      animation: none !important;
+    }
+    .animate-fade-in-up {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 }

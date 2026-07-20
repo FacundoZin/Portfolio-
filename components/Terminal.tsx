@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { Terminal as TerminalIcon, X } from "lucide-react"
+import { useLanguage } from "../lib/language-context"
 
 interface TerminalLine {
   text: string;
@@ -9,10 +10,11 @@ interface TerminalLine {
 }
 
 export default function Terminal() {
+  const { dict: t } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
   const [history, setHistory] = useState<TerminalLine[]>([
-    { text: "Welcome to Facundo Zin's interactive shell.", type: "welcome" },
-    { text: "Type 'help' to see all available commands.", type: "welcome" },
+    { text: t.terminalWelcome1, type: "welcome" },
+    { text: t.terminalWelcome2, type: "welcome" },
   ])
   const [input, setInput] = useState("")
   const containerRef = useRef<HTMLDivElement>(null)
@@ -24,10 +26,10 @@ export default function Terminal() {
     }
   }, [history])
 
-  // Focus input when terminal opens
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 100)
+      const raf = requestAnimationFrame(() => inputRef.current?.focus())
+      return () => cancelAnimationFrame(raf)
     }
   }, [isOpen])
 
@@ -35,12 +37,11 @@ export default function Terminal() {
     const trimmed = cmd.trim().toLowerCase()
     if (!trimmed) return
 
-    const newHistory = [...history, { text: `facundozin ~ % ${cmd}`, type: "input" as const }]
+    const inputLine: TerminalLine = { text: `facundozin ~ % ${cmd}`, type: "input" }
 
     switch (trimmed) {
       case "help":
-        setHistory([
-          ...newHistory,
+        setHistory((prev) => [...prev, inputLine,
           { text: "Available commands:", type: "output" },
           { text: "  about    - Learn more about Facundo", type: "output" },
           { text: "  projects - List main software development projects", type: "output" },
@@ -50,23 +51,20 @@ export default function Terminal() {
         ])
         break
       case "about":
-        setHistory([
-          ...newHistory,
+        setHistory((prev) => [...prev, inputLine,
           { text: "Facundo Zin - AI Native Software Engineer based in Argentina.", type: "output" },
           { text: "Focusing on scalable systems, LLM integrations, and robust architectures.", type: "output" },
         ])
         break
       case "projects":
-        setHistory([
-          ...newHistory,
+        setHistory((prev) => [...prev, inputLine,
           { text: "• ASOCIARG: Modular C#/.NET SaaS for civil associations.", type: "output" },
           { text: "• AFRelay: Python-based ARCA invoicing middleware with multitenancy.", type: "output" },
           { text: "• Rappi Delivery App: NestJS academic backend with PostgreSQL.", type: "output" },
         ])
         break
       case "skills":
-        setHistory([
-          ...newHistory,
+        setHistory((prev) => [...prev, inputLine,
           { text: "Languages & Frameworks:", type: "output" },
           { text: "  C#, .NET, Python, TypeScript, NestJS, React, PostgreSQL", type: "output" },
           { text: "Tools & Architectures:", type: "output" },
@@ -74,8 +72,7 @@ export default function Terminal() {
         ])
         break
       case "cv":
-        setHistory([
-          ...newHistory,
+        setHistory((prev) => [...prev, inputLine,
           { text: "CV Links:", type: "output" },
           { text: "  - [ES] /cv/cv-facundozin-es.pdf", type: "output" },
           { text: "  - [EN] /cv/cv-facundozin-en.pdf", type: "output" },
@@ -87,9 +84,8 @@ export default function Terminal() {
         setHistory([])
         break
       default:
-        setHistory([
-          ...newHistory,
-          { text: `command not found: ${cmd}. Type 'help' for options.`, type: "error" },
+        setHistory((prev) => [...prev, inputLine,
+          { text: t.terminalNotFound.replace("{cmd}", cmd), type: "error" },
         ])
     }
   }
@@ -127,7 +123,7 @@ export default function Terminal() {
           <TerminalIcon className="w-5 h-5" />
         </div>
         <span className="absolute right-14 bg-background border border-border text-foreground px-2.5 py-1 rounded text-[10px] font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-sm pointer-events-none">
-          Terminal interactiva
+          {t.terminalTooltip}
         </span>
       </button>
 
@@ -149,7 +145,7 @@ export default function Terminal() {
                 setIsOpen(false)
               }}
               className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] flex items-center justify-center text-[6px] text-black hover:opacity-85 cursor-pointer"
-              title="Close"
+              aria-label="Close"
             />
             <button
               onClick={(e) => {
@@ -157,7 +153,7 @@ export default function Terminal() {
                 setIsOpen(false)
               }}
               className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] flex items-center justify-center text-[6px] text-black hover:opacity-85 cursor-pointer"
-              title="Minimize"
+              aria-label="Minimize"
             />
             <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
           </div>
@@ -168,6 +164,7 @@ export default function Terminal() {
               setIsOpen(false)
             }}
             className="text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
+            aria-label="Close terminal"
           >
             <X className="w-3.5 h-3.5" />
           </button>
@@ -176,7 +173,7 @@ export default function Terminal() {
         {/* Terminal Area */}
         <div
           ref={containerRef}
-          className="p-4 h-68 overflow-y-auto space-y-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted-foreground/20 flex flex-col justify-between"
+          className="p-4 h-[272px] overflow-y-auto space-y-2 flex flex-col justify-between"
         >
           <div className="space-y-1.5 flex-1">
             {history.map((line, idx) => (
@@ -222,7 +219,7 @@ export default function Terminal() {
 
           {/* Clickable Suggestions */}
           <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border/10 text-[10px] text-muted-foreground select-none">
-            <span className="mr-0.5">Clickeá:</span>
+            <span className="mr-0.5">{t.terminalClickLabel}</span>
             {commands.map((cmd) => (
               <button
                 key={cmd}

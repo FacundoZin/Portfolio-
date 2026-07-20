@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Geist } from "next/font/google"
 import "./globals.css"
 import { LanguageProvider } from "../lib/language-context"
+import HtmlLang from "../components/HtmlLang"
 
 const geist = Geist({
   subsets: ["latin"],
@@ -13,7 +14,6 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "Facundo Zin - Software Engineer",
   description: "Software Engineer focused on scalable systems, LLM integration and enterprise applications.",
-  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -24,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${geist.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          <HtmlLang />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   )

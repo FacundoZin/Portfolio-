@@ -68,7 +68,7 @@ export default function Home() {
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
         <header
           id="intro"
-          ref={(el) => (sectionsRef.current[0] = el)}
+          ref={(el) => { sectionsRef.current[0] = el }}
           className="min-h-screen flex items-center opacity-0"
         >
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
@@ -179,7 +179,7 @@ export default function Home() {
                     <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21V7a2 2 0 012-2h14a2 2 0 012 2v14M9 21V11h6v10M9 7h.01M12 7h.01M15 7h.01M9 11h.01M15 11h.01" />
                     </svg>
-                    Syntrax Software
+                    {t.currentCompany}
                   </div>
                   <div className="text-xs text-muted-foreground">{t.present}</div>
                 </div>
@@ -206,7 +206,7 @@ export default function Home() {
 
         <section
           id="work"
-          ref={(el) => (sectionsRef.current[1] = el)}
+          ref={(el) => { sectionsRef.current[1] = el }}
           className="min-h-screen py-20 sm:py-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
@@ -321,7 +321,7 @@ export default function Home() {
 
         <section
           id="education"
-          ref={(el) => (sectionsRef.current[2] = el)}
+          ref={(el) => { sectionsRef.current[2] = el }}
           className="pt-10 sm:pt-16 pb-20 sm:pb-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
@@ -384,7 +384,7 @@ export default function Home() {
 
         <section
           id="thoughts"
-          ref={(el) => (sectionsRef.current[3] = el)}
+          ref={(el) => { sectionsRef.current[3] = el }}
           className="min-h-screen py-20 sm:py-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
@@ -434,7 +434,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="connect" ref={(el) => (sectionsRef.current[4] = el)} className="py-20 sm:py-32 opacity-0">
+        <section id="connect" ref={(el) => { sectionsRef.current[4] = el }} className="py-20 sm:py-32 opacity-0">
           <div className="grid lg:grid-cols-2 gap-12 sm:gap-16">
             <div className="space-y-6 sm:space-y-8">
               <h2 className="text-3xl sm:text-4xl font-light">{t.letsTalk}</h2>
@@ -590,24 +590,6 @@ export default function Home() {
                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
                   </svg>
                 )}
-              </button>
-
-              <LanguageToggle />
-
-              <button className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300">
-                <svg
-                  className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                  />
-                </svg>
               </button>
             </div>
           </div>

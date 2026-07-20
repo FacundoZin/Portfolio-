@@ -1,7 +1,9 @@
 "use client"
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react"
 import { getDictionary, type Locale, type Dictionary } from "./i18n"
+
+const STORAGE_KEY = "portfolio-locale"
 
 interface LanguageContextType {
   locale: Locale
@@ -14,9 +16,20 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocale] = useState<Locale>("es")
 
-  const toggleLanguage = () => {
-    setLocale((prev) => (prev === "es" ? "en" : "es"))
-  }
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    if (saved === "es" || saved === "en") {
+      setLocale(saved)
+    }
+  }, [])
+
+  const toggleLanguage = useCallback(() => {
+    setLocale((prev) => {
+      const next = prev === "es" ? "en" : "es"
+      localStorage.setItem(STORAGE_KEY, next)
+      return next
+    })
+  }, [])
 
   const dict = getDictionary(locale)
 
