@@ -6,6 +6,7 @@ import { Github, ExternalLink } from "lucide-react"
 import Terminal from "../components/Terminal"
 import LanguageToggle from "../components/LanguageToggle"
 import { useLanguage } from "../lib/language-context"
+import TechTicker from "../components/TechTicker"
 
 
 export default function Home() {
@@ -200,6 +201,8 @@ export default function Home() {
             </div>
           </div>
         </header>
+
+        <TechTicker />
 
         <section
           id="work"
