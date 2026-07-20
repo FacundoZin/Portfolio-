@@ -2,8 +2,12 @@
 
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
+import { Github, ExternalLink } from "lucide-react"
+import Terminal from "../components/Terminal"
+
 
 export default function Home() {
+  const email = "facundozin10@gmail.com"
   const [isDark, setIsDark] = useState(true)
   const [activeSection, setActiveSection] = useState("")
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
@@ -22,7 +26,7 @@ export default function Home() {
           }
         })
       },
-      { threshold: 0.3, rootMargin: "0px 0px -20% 0px" },
+      { threshold: 0.05, rootMargin: "0px 0px -10% 0px" },
     )
 
     sectionsRef.current.forEach((section) => {
@@ -72,29 +76,91 @@ export default function Home() {
 
               <div className="space-y-6 max-w-md">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Software Engineer enfocado en el desarrollo de sistemas
+                  <span className="text-foreground"> AI Native </span>
+                   Software Engineer enfocado en el desarrollo de sistemas
                   <span className="text-foreground"> escalables</span>, integración de
-                  <span className="text-foreground"> LLMs</span> y construcción de aplicaciones
-                  <span className="text-foreground"> AINative</span>.
+                  <span className="text-foreground"> LLMs</span> y construcción de aplicaciones y
+                  <span className="text-foreground"> Sistemas Empresariales</span>
                 </p>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    Disponible para proyectos
+                    Búsqueda activa de nuevas oportunidades
                   </div>
                   <div>Argentina</div>
+                </div>
+
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <a
+                    href="/cv/cv-facundozin-es.pdf"
+                    download="CV-Facundo-Zin-ES.pdf"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono text-muted-foreground hover:text-foreground border border-border hover:border-muted-foreground/50 rounded-md transition-all duration-300 bg-muted/5 hover:bg-muted/10 cursor-pointer"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <span>Descargar CV (ES)</span>
+                  </a>
+                  <a
+                    href="/cv/cv-facundozin-en.pdf"
+                    download="CV-Facundo-Zin-EN.pdf"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono text-muted-foreground hover:text-foreground border border-border hover:border-muted-foreground/50 rounded-md transition-all duration-300 bg-muted/5 hover:bg-muted/10 cursor-pointer"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <span>Download CV (EN)</span>
+                  </a>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-2 flex flex-col justify-center items-center lg:items-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
-              <div className="w-40 h-40 sm:w-52 sm:h-52 rounded-full overflow-hidden border-2 border-border shadow-lg hover:shadow-xl transition-shadow duration-500">
-                <img
-                  src="/profile.jpg"
-                  alt="Facundo Zin"
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative">
+                {/* Animated Thorny Devil Mascot (Claude Code Style) */}
+                <div className="absolute -top-[34px] left-[55px] sm:left-[80px] z-10 animate-bounce" style={{ animationDuration: '3s' }}>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 select-none pointer-events-none drop-shadow-[0_2px_8px_rgba(64,196,99,0.2)]">
+                    <style>{`
+                      @keyframes tail-wag {
+                        0%, 100% { transform: rotate(0deg); }
+                        50% { transform: rotate(12deg); }
+                      }
+                      @keyframes head-bob {
+                        0%, 100% { transform: translateY(0); }
+                        50% { transform: translateY(-0.8px); }
+                      }
+                      .wag { animation: tail-wag 1.5s ease-in-out infinite; transform-origin: 6px 14px; }
+                      .bob { animation: head-bob 2s ease-in-out infinite; }
+                    `}</style>
+                    {/* Tail */}
+                    <path d="M 6 14 Q 2 15 3 10" stroke="#40c463" strokeWidth="2.5" strokeLinecap="round" className="wag" />
+                    {/* Legs */}
+                    <rect x="7" y="15" width="2" height="3" fill="#2d8744" rx="0.5" />
+                    <rect x="12" y="15" width="2" height="3" fill="#2d8744" rx="0.5" />
+                    {/* Body */}
+                    <rect x="6" y="10" width="9" height="6" rx="2" fill="#40c463" />
+                    {/* Spikes / Thorns */}
+                    <path d="M 8 10 L 9 7 L 10 10" fill="#f59e0b" />
+                    <path d="M 11 10 L 12 7 L 13 10" fill="#f59e0b" />
+                    {/* Head */}
+                    <g className="bob">
+                      <rect x="13" y="8" width="6" height="6" rx="1.5" fill="#40c463" />
+                      <path d="M 15 8 L 16 5 L 17 8" fill="#f59e0b" />
+                      {/* Eye */}
+                      <circle cx="17" cy="10.5" r="0.8" fill="black" />
+                      <circle cx="17.2" cy="10.2" r="0.3" fill="white" />
+                    </g>
+                  </svg>
+                </div>
+
+                <div className="w-40 h-40 sm:w-52 sm:h-52 rounded-full overflow-hidden border-2 border-border shadow-lg hover:shadow-xl transition-shadow duration-500 relative">
+                  <img
+                    src="/profile.jpg"
+                    alt="Facundo Zin"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
 
               <div className="space-y-4 w-full">
@@ -176,6 +242,25 @@ export default function Home() {
                   description:
                     "Plataforma para la gestión integral de asociaciones civiles. Módulos de socios, viajes, cobros, reservas, portal de pagos e integración con Mercado Pago, WhatsApp y ARCA. Arquitectura monolítica y modular lista para deploy en VPS con Docker.",
                   tech: ["C#", ".NET", "DDD", "Docker", "Mercado Pago", "Multi-tenant"],
+                  link: {
+                    url: "https://www.asociarg.cloud/",
+                    label: "Sitio Web",
+                    type: "external",
+                  },
+                },
+                {
+                  year: "2025",
+                  role: "AFRelay",
+                  company: "Contribución Open Source",
+                  type: "proyecto",
+                  description:
+                    "Diseñé e implementé una arquitectura multi-client y persistencia en base de datos para este middleware de facturación de ARCA. Reemplacé el almacenamiento  de certificados en firestore por PostgreSQL con cifrado para claves privadas, y refactoricé los endpoints para la resolución dinámica de credenciales por CUIT.",
+                  tech: ["Python", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker", "Cryptography"],
+                  link: {
+                    url: "https://github.com/FacundoZin/AFRelay",
+                    label: "GitHub",
+                    type: "github",
+                  },
                 },
                 {
                   year: "2024",
@@ -185,6 +270,11 @@ export default function Home() {
                   description:
                     "Backend monolítico y modular para la materia Metodología de Sistemas 2. Incluye autenticación, roles, gestión de restaurantes, pedidos, carrito y soporte. Documentado con diagramas UML.",
                   tech: ["TypeScript", "NestJS", "PostgreSQL", "JWT", "UML"],
+                  link: {
+                    url: "https://github.com/FacundoZin/TP-Rappi-Metodolog-aDeSistemas-",
+                    label: "GitHub",
+                    type: "github",
+                  },
                 },
               ].map((item, index) => (
                 <div
@@ -206,13 +296,31 @@ export default function Home() {
                       <div className="text-muted-foreground">{item.company}</div>
                     </div>
                     <p className="text-muted-foreground leading-relaxed max-w-lg">{item.description}</p>
+                    {item.link && (
+                      <div className="pt-1">
+                        <Link
+                          href={item.link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-muted-foreground hover:text-foreground border border-border hover:border-muted-foreground/50 rounded-md transition-all duration-300 bg-muted/5 hover:bg-muted/10"
+                        >
+                          {item.link.type === "github" ? (
+                            <Github className="w-3.5 h-3.5" />
+                          ) : (
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          )}
+                          <span>{item.link.label}</span>
+                        </Link>
+                      </div>
+                    )}
                   </div>
+
 
                   <div className="lg:col-span-4 flex flex-wrap gap-2 lg:justify-end mt-2 lg:mt-0 content-start">
                     {item.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 text-xs text-muted-foreground rounded group-hover:border-muted-foreground/50 transition-colors duration-500"
+                        className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
                       >
                         {tech}
                       </span>
@@ -221,13 +329,60 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            {/* GitHub Contributions & Stats */}
+            <div className="pt-16 space-y-8">
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                <h3 className="text-xl sm:text-2xl font-light">Actividad en GitHub</h3>
+                <Link
+                  href="https://github.com/FacundoZin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors duration-300"
+                >
+                  VER PERFIL →
+                </Link>
+              </div>
+
+              <div className="space-y-6">
+                {/* Calendario de contribuciones (cuadraditos) */}
+                <div className="p-6 border border-border rounded-lg bg-muted/5 space-y-4">
+                  <div className="text-sm font-mono text-muted-foreground">Contribuciones</div>
+                  <div className="w-full overflow-x-auto pb-2 scrollbar-thin">
+                    <img
+                      src="https://ghchart.rshah.org/40c463/FacundoZin"
+                      alt="GitHub Contributions Calendar"
+                      className="min-w-[700px] w-full"
+                    />
+                  </div>
+                </div>
+
+                {/* Grid de Estadísticas */}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="p-6 border border-border rounded-lg bg-muted/5 flex items-center justify-center">
+                    <img
+                      src="https://github-readme-stats-sigma-five.vercel.app/api?username=FacundoZin&show_icons=true&theme=onedark&hide_border=true&bg_color=00000000"
+                      alt="GitHub Stats"
+                      className="max-w-full h-auto"
+                    />
+                  </div>
+                  <div className="p-6 border border-border rounded-lg bg-muted/5 flex items-center justify-center">
+                    <img
+                      src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=FacundoZin&layout=compact&theme=onedark&hide_border=true&bg_color=00000000"
+                      alt="Top Languages"
+                      className="max-w-full h-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         <section
           id="education"
           ref={(el) => (sectionsRef.current[2] = el)}
-          className="py-20 sm:py-32 opacity-0"
+          className="pt-10 sm:pt-16 pb-20 sm:pb-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
@@ -238,22 +393,22 @@ export default function Home() {
             <div className="space-y-8 sm:space-y-12">
               {[
                 {
-                  period: "2022 — Presente",
+                  period: "2024 — 2026",
                   degree: "Tecnicatura Universitaria en Programacion",
                   institution: "Universidad Tecnologica Nacional",
-                  location: "Villa Maria, Cordoba",
-                  status: "En curso",
-                  description:
-                    "Formacion tecnica universitaria con enfasis en desarrollo de software, bases de datos, arquitectura de sistemas y metodologias de desarrollo. Actualmente realizando beca de sistemas en la institucion.",
-                },
-                {
-                  period: "2023",
-                  degree: "Certificacion Full Stack",
-                  institution: "EducacionIT",
-                  location: "Modalidad online",
+                  location: "San Francisco, Cordoba",
                   status: "Completado",
                   description:
-                    "Programa intensivo de desarrollo full stack abarcando frontend, backend y bases de datos relacionales. Fundamentos practicos que complementaron la formacion universitaria.",
+                    "Formacion tecnica universitaria con enfasis en desarrollo de software, bases de datos, arquitectura de sistemas y metodologias de desarrollo. Actualmente realizando el trabajo final integrador de la carrera",
+                },
+                {
+                  period: "Presente",
+                  degree: "Ingenieria en Sistemas",
+                  institution: "Universidad Tecnologica Nacional",
+                  location: "San Francisco, Cordoba",
+                  status: "En curso",
+                  description:
+                    "Carrera universitaria con enfoque en el diseño, desarrollo y gestion de sistemas de informacion. Integrando conocimientos de organizacion y negocios con arquitectura de software, bases de datos, inteligencia artificial y metodologias de desarrollo.",
                 },
               ].map((item, index) => (
                 <div
@@ -312,38 +467,45 @@ export default function Home() {
           className="min-h-screen py-20 sm:py-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
-            <h2 className="text-3xl sm:text-4xl font-light">Pensamientos</h2>
+            <h2 className="text-3xl sm:text-4xl font-light">Publicaciones</h2>
 
             <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
               {[
                 {
-                  title: "The Future of Web Development",
-                  excerpt: "Exploring how AI and automation are reshaping the way we build for the web.",
-                  date: "Dec 2024",
-                  readTime: "5 min",
+                  title: "Arquitectura Multi-tenant en SaaS: ¿Aislamiento por Software o por Infraestructura?",
+                  excerpt: "Una decisión de arquitectura clave en ASOCIARG fue cómo diseñar el multi-tenancy. Analizo las ventajas y desventajas de las distintas estrategias de aislamiento de datos.",
+                  date: "Hace 1 hora",
+                  readTime: "3 min",
+                  link: "https://www.linkedin.com/posts/facundozin_softwarearchitecture-multitenant-saas-share-7484280636321513472-GbNW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEA9M5sBICaPx3E6MWfqH_76HBjiVPDXzPM",
                 },
                 {
-                  title: "Design Systems at Scale",
-                  excerpt: "Lessons learned from building and maintaining design systems across multiple products.",
-                  date: "Nov 2024",
-                  readTime: "8 min",
-                },
-                {
-                  title: "Performance-First Development",
-                  excerpt: "Why performance should be a first-class citizen in your development workflow.",
-                  date: "Oct 2024",
-                  readTime: "6 min",
-                },
-                {
-                  title: "The Art of Code Review",
-                  excerpt: "Building better software through thoughtful and constructive code reviews.",
-                  date: "Sep 2024",
+                  title: "Gentle AI: Potenciando el Desarrollo Asistido por Agentes de IA",
+                  excerpt: "Descubrí cómo estructurar y potenciar el flujo de desarrollo con agentes de IA usando Gentle AI, Spec-Driven Development (SDD), Engram y CodeGraph.",
+                  date: "Hace 4 días",
                   readTime: "4 min",
+                  link: "https://www.linkedin.com/feed/update/urn:li:activity:7483529244657061888/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEA9M5sBICaPx3E6MWfqH_76HBjiVPDXzPM",
+                },
+                {
+                  title: "Integración automática con Mercado Pago dentro de ASOCIARG",
+                  excerpt: "Implementamos el flujo OAuth de Mercado Pago para lograr una vinculación de cuentas al instante, eliminando configuraciones manuales complejas para los usuarios.",
+                  date: "Hace 2 meses",
+                  readTime: "2 min",
+                  link: "https://www.linkedin.com/posts/asociarg_mercadopago-fintech-asociarg-ugcPost-7452339909484322816-B-vy?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEA9M5sBICaPx3E6MWfqH_76HBjiVPDXzPM",
+                },
+                {
+                  title: "El camino de seguir actualizando e impulsando ASOCIARG",
+                  excerpt: "Emprender en tecnología es aceptar que nada está terminado. Comparto mis aprendizajes y la convicción detrás de la evolución de esta plataforma para instituciones civiles.",
+                  date: "Hace 4 meses",
+                  readTime: "2 min",
+                  link: "https://www.linkedin.com/posts/facundozin_saas-startups-construyendo-ugcPost-7438335200511737856-SRqx/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEA9M5sBICaPx3E6MWfqH_76HBjiVPDXzPM",
                 },
               ].map((post, index) => (
-                <article
+                <Link
+                  href={post.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   key={index}
-                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg cursor-pointer"
+                  className="group p-6 sm:p-8 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-500 hover:shadow-lg block cursor-pointer"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
@@ -358,7 +520,7 @@ export default function Home() {
                     <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
 
                     <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      <span>Read more</span>
+                      <span>Leer en LinkedIn</span>
                       <svg
                         className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
                         fill="none"
@@ -374,7 +536,7 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           </div>
@@ -387,15 +549,15 @@ export default function Home() {
 
               <div className="space-y-6">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Abierto a nuevas oportunidades, colaboraciones y conversaciones sobre tecnología e IA.
+                  Abierto a nuevas oportunidades, proyectos y conversaciones.
                 </p>
 
                 <div className="space-y-4">
                   <Link
-                    href="mailto:zinf816@gmail.com"
+                    href={`mailto:${email}`}
                     className="group flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors duration-300"
                   >
-                    <span className="text-base sm:text-lg">zinf816@gmail.com</span>
+                    <span className="text-base sm:text-lg">{email}</span>
                     <svg
                       className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
                       fill="none"
@@ -437,7 +599,7 @@ export default function Home() {
 
                 {/* LinkedIn */}
                 <Link
-                  href="https://www.linkedin.com/in/facundo-zin"
+                  href="https://www.linkedin.com/in/facundozin"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-sm"
@@ -457,9 +619,8 @@ export default function Home() {
                   </div>
                 </Link>
 
-                {/* Gmail */}
                 <Link
-                  href="mailto:zinf816@gmail.com"
+                  href={`mailto:${email}`}
                   className="group p-4 border border-border rounded-lg hover:border-muted-foreground/50 transition-all duration-300 hover:shadow-sm"
                 >
                   <div className="space-y-3">
@@ -472,7 +633,7 @@ export default function Home() {
                     />
                     <div>
                       <div className="text-foreground group-hover:text-muted-foreground transition-colors duration-300">Gmail</div>
-                      <div className="text-sm text-muted-foreground">zinf816@gmail.com</div>
+                      <div className="text-sm text-muted-foreground break-all">{email}</div>
                     </div>
                   </div>
                 </Link>
@@ -506,8 +667,8 @@ export default function Home() {
         <footer className="py-12 sm:py-16 border-t border-border">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
             <div className="space-y-2">
-              <div className="text-sm text-muted-foreground">© 2025 Felix Macaspac. All rights reserved.</div>
-              <div className="text-xs text-muted-foreground">Built with v0.dev by Felix Macaspac</div>
+              <div className="text-sm text-muted-foreground">© 2026 Facundo Zin. Todos los derechos reservados.</div>
+              <div className="text-xs text-muted-foreground">Diseñado y desarrollado por Facundo Zin</div>
             </div>
 
             <div className="flex items-center gap-4">
@@ -560,6 +721,7 @@ export default function Home() {
       </main>
 
       <div className="fixed bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none"></div>
+      <Terminal />
     </div>
   )
 }
