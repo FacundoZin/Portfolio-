@@ -69,7 +69,7 @@ export default function Home() {
         <header
           id="intro"
           ref={(el) => { sectionsRef.current[0] = el }}
-          className="min-h-screen flex items-center opacity-0"
+          className="min-h-screen flex items-center opacity-0 py-10 sm:py-0"
         >
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
             <div className="lg:col-span-3 space-y-6 sm:space-y-8">
@@ -124,8 +124,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:col-span-2 flex flex-col justify-center items-center lg:items-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
-              <div className="relative">
+            <div className="lg:col-span-2 flex flex-col justify-center items-center space-y-6 sm:space-y-8 mt-8 lg:mt-0">
+              <div className="relative lg:self-end">
                 {/* Animated Thorny Devil Mascot (Claude Code Style) */}
                 <div className="absolute -top-[34px] left-[55px] sm:left-[80px] z-10 animate-bounce" style={{ animationDuration: '3s' }}>
                   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 select-none pointer-events-none drop-shadow-[0_2px_8px_rgba(64,196,99,0.2)]">
@@ -188,7 +188,7 @@ export default function Home() {
               <div className="space-y-4 w-full">
                 <div className="text-sm text-muted-foreground font-mono">{t.stack}</div>
                 <div className="flex flex-wrap gap-2">
-                  {["C#", ".NET", "TypeScript", "NestJS", "React", "Docker"].map((skill) => (
+                  {["C#", ".NET", "TypeScript", "NestJS", "React", "Docker", "n8n"].map((skill) => (
                     <span
                       key={skill}
                       className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
