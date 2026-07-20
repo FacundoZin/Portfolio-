@@ -203,7 +203,7 @@ function renderIcon(icon: TechIcon, index: string) {
   return (
     <div
       key={index}
-      className={`flex items-center gap-3 transition-all duration-300 cursor-pointer group/icon transform hover:scale-110 shrink-0 ${icon.hoverColor}`}
+      className={`flex items-center gap-3 transition-transform duration-300 cursor-pointer group/icon hover:scale-110 shrink-0 ${icon.hoverColor}`}
       title={icon.name}
     >
       {icon.slug ? (

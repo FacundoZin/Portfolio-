@@ -150,7 +150,7 @@
     will-change: transform;
   }
 
-  .animate-marquee:hover {
+  .group\/marquee:hover .animate-marquee {
     animation-play-state: paused;
   }
 
