@@ -13,7 +13,33 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   title: "Facundo Zin - Software Engineer",
-  description: "Software Engineer focused on scalable systems, LLM integration and enterprise applications.",
+  description:
+    "AI Native Software Engineer specializing in scalable systems, LLM integration, and enterprise applications. C#, .NET, TypeScript, NestJS, React.",
+  openGraph: {
+    title: "Facundo Zin - Software Engineer",
+    description:
+      "AI Native Software Engineer specializing in scalable systems, LLM integration, and enterprise applications.",
+    url: "https://facundozin.vercel.app",
+    siteName: "Facundo Zin Portfolio",
+    locale: "es_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Facundo Zin - Software Engineer",
+    description:
+      "AI Native Software Engineer specializing in scalable systems, LLM integration, and enterprise applications.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-icon.png",
+  },
 }
 
 export default function RootLayout({

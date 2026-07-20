@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://facundozin.vercel.app/sitemap.xml
