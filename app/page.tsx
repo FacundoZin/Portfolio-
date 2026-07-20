@@ -4,6 +4,8 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { Github, ExternalLink } from "lucide-react"
 import Terminal from "../components/Terminal"
+import LanguageToggle from "../components/LanguageToggle"
+import { useLanguage } from "../lib/language-context"
 
 
 export default function Home() {
@@ -11,6 +13,7 @@ export default function Home() {
   const [isDark, setIsDark] = useState(true)
   const [activeSection, setActiveSection] = useState("")
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
+  const { dict: t } = useLanguage()
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark)
@@ -42,6 +45,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
+      <div className="fixed top-6 right-6 z-20">
+        <LanguageToggle />
+      </div>
+
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
         <div className="flex flex-col gap-4">
           {["intro", "work", "education", "thoughts", "connect"].map((section) => (
@@ -66,7 +73,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
             <div className="lg:col-span-3 space-y-6 sm:space-y-8">
               <div className="space-y-3 sm:space-y-2">
-                <div className="text-sm text-muted-foreground font-mono tracking-wider">PORTFOLIO / 2026</div>
+                <div className="text-sm text-muted-foreground font-mono tracking-wider">{t.portfolio}</div>
                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
                   Facundo
                   <br />
@@ -76,19 +83,19 @@ export default function Home() {
 
               <div className="space-y-6 max-w-md">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  <span className="text-foreground"> AI Native </span>
-                   Software Engineer enfocado en el desarrollo de sistemas
-                  <span className="text-foreground"> escalables</span>, integración de
-                  <span className="text-foreground"> LLMs</span> y construcción de aplicaciones y
-                  <span className="text-foreground"> Sistemas Empresariales</span>
+                  <span className="text-foreground"> {t.aiNative} </span>
+                   {t.subtitle}
+                  <span className="text-foreground">{t.scalable}</span>,{t.llms}
+                  <span className="text-foreground">{t.llmsHighlight}</span>{t.andBuild}
+                  <span className="text-foreground">{t.enterprise}</span>
                 </p>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    Búsqueda activa de nuevas oportunidades
+                    {t.activeSearch}
                   </div>
-                  <div>Argentina</div>
+                  <div>{t.country}</div>
                 </div>
 
                 <div className="flex flex-wrap gap-3 pt-2">
@@ -100,7 +107,7 @@ export default function Home() {
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span>Descargar CV (ES)</span>
+                    <span>{t.downloadCV}</span>
                   </a>
                   <a
                     href="/cv/cv-facundozin-en.pdf"
@@ -110,7 +117,7 @@ export default function Home() {
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span>Download CV (EN)</span>
+                    <span>{t.downloadCVEN}</span>
                   </a>
                 </div>
               </div>
@@ -164,21 +171,21 @@ export default function Home() {
               </div>
 
               <div className="space-y-4 w-full">
-                <div className="text-sm text-muted-foreground font-mono">ACTUALMENTE</div>
+                <div className="text-sm text-muted-foreground font-mono">{t.currently}</div>
                 <div className="space-y-2">
-                  <div className="text-foreground">Software Engineer</div>
+                  <div className="text-foreground">{t.softwareEngineer}</div>
                   <div className="flex items-center gap-1.5 text-muted-foreground">
                     <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21V7a2 2 0 012-2h14a2 2 0 012 2v14M9 21V11h6v10M9 7h.01M12 7h.01M15 7h.01M9 11h.01M15 11h.01" />
                     </svg>
                     Syntrax Software
                   </div>
-                  <div className="text-xs text-muted-foreground">2025 — Presente</div>
+                  <div className="text-xs text-muted-foreground">{t.present}</div>
                 </div>
               </div>
 
               <div className="space-y-4 w-full">
-                <div className="text-sm text-muted-foreground font-mono">STACK</div>
+                <div className="text-sm text-muted-foreground font-mono">{t.stack}</div>
                 <div className="flex flex-wrap gap-2">
                   {["C#", ".NET", "TypeScript", "NestJS", "React", "Docker"].map((skill) => (
                     <span
@@ -201,82 +208,12 @@ export default function Home() {
         >
           <div className="space-y-12 sm:space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="text-3xl sm:text-4xl font-light">Experiencia & Proyectos</h2>
-              <div className="text-sm text-muted-foreground font-mono">2024 — 2026</div>
+              <h2 className="text-3xl sm:text-4xl font-light">{t.experienceTitle}</h2>
+              <div className="text-sm text-muted-foreground font-mono">{t.experienceYears}</div>
             </div>
 
             <div className="space-y-8 sm:space-y-12">
-              {[
-                {
-                  year: "2025",
-                  role: "Software Engineer",
-                  company: "Syntrax Software",
-                  type: "trabajo",
-                  description:
-                    "Lidero el ciclo de vida completo de proyectos: desde el relevamiento hasta producción. Diseño arquitecturas modulares con DDD, implemento CI/CD con Docker y GitHub Actions, y aplico metodologías AINative como SDD para acelerar el desarrollo sin comprometer la calidad.",
-                  tech: ["C#", ".NET", "Docker", "GitHub Actions", "DDD", "SDD"],
-                },
-                {
-                  year: "2025",
-                  role: "AI Integrator",
-                  company: "SSI Technologies",
-                  type: "trabajo",
-                  description:
-                    "Diseñé y desarrollé agentes de IA para automatización de flujos productivos con n8n. Implementé bases de datos vectoriales (Pinecone), ingeniería avanzada de prompts y flujos integrados con webhooks, Firestore y cloud functions.",
-                  tech: ["n8n", "Pinecone", "LLMs", "Prompt Engineering", "RAG"],
-                },
-                {
-                  year: "2025",
-                  role: "Becario de Sistemas",
-                  company: "UTN",
-                  type: "trabajo",
-                  description:
-                    "Desarrollé un sistema web para la gestión integral de convenios institucionales. Relevé requisitos con stakeholders, implementé gestión documental, alertas de vencimiento y flujos de actualización de datos.",
-                  tech: ["TypeScript", "NestJS", "React", "PostgreSQL"],
-                },
-                {
-                  year: "2025",
-                  role: "ASOCIARG",
-                  company: "Proyecto personal",
-                  type: "proyecto",
-                  description:
-                    "Plataforma para la gestión integral de asociaciones civiles. Módulos de socios, viajes, cobros, reservas, portal de pagos e integración con Mercado Pago, WhatsApp y ARCA. Arquitectura monolítica y modular lista para deploy en VPS con Docker.",
-                  tech: ["C#", ".NET", "DDD", "Docker", "Mercado Pago", "Multi-tenant"],
-                  link: {
-                    url: "https://www.asociarg.cloud/",
-                    label: "Sitio Web",
-                    type: "external",
-                  },
-                },
-                {
-                  year: "2025",
-                  role: "AFRelay",
-                  company: "Contribución Open Source",
-                  type: "proyecto",
-                  description:
-                    "Diseñé e implementé una arquitectura multi-client y persistencia en base de datos para este middleware de facturación de ARCA. Reemplacé el almacenamiento  de certificados en firestore por PostgreSQL con cifrado para claves privadas, y refactoricé los endpoints para la resolución dinámica de credenciales por CUIT.",
-                  tech: ["Python", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker", "Cryptography"],
-                  link: {
-                    url: "https://github.com/FacundoZin/AFRelay",
-                    label: "GitHub",
-                    type: "github",
-                  },
-                },
-                {
-                  year: "2024",
-                  role: "Rappi Delivery App",
-                  company: "Proyecto académico",
-                  type: "proyecto",
-                  description:
-                    "Backend monolítico y modular para la materia Metodología de Sistemas 2. Incluye autenticación, roles, gestión de restaurantes, pedidos, carrito y soporte. Documentado con diagramas UML.",
-                  tech: ["TypeScript", "NestJS", "PostgreSQL", "JWT", "UML"],
-                  link: {
-                    url: "https://github.com/FacundoZin/TP-Rappi-Metodolog-aDeSistemas-",
-                    label: "GitHub",
-                    type: "github",
-                  },
-                },
-              ].map((item, index) => (
+              {t.experiences.map((item, index) => (
                 <div
                   key={index}
                   className="group grid lg:grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 border-b border-border/50 hover:border-border transition-colors duration-500"
@@ -286,7 +223,7 @@ export default function Home() {
                       {item.year}
                     </div>
                     <div className="text-xs font-mono text-muted-foreground/60 uppercase tracking-wider">
-                      {item.type === "proyecto" ? "proyecto" : "empleo"}
+                      {item.type === "project" ? t.project : t.employment}
                     </div>
                   </div>
 
@@ -333,21 +270,21 @@ export default function Home() {
             {/* GitHub Contributions & Stats */}
             <div className="pt-16 space-y-8">
               <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-                <h3 className="text-xl sm:text-2xl font-light">Actividad en GitHub</h3>
+                <h3 className="text-xl sm:text-2xl font-light">{t.githubActivity}</h3>
                 <Link
                   href="https://github.com/FacundoZin"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors duration-300"
                 >
-                  VER PERFIL →
+                  {t.viewProfile}
                 </Link>
               </div>
 
               <div className="space-y-6">
                 {/* Calendario de contribuciones (cuadraditos) */}
                 <div className="p-6 border border-border rounded-lg bg-muted/5 space-y-4">
-                  <div className="text-sm font-mono text-muted-foreground">Contribuciones</div>
+                  <div className="text-sm font-mono text-muted-foreground">{t.contributions}</div>
                   <div className="w-full overflow-x-auto pb-2 scrollbar-thin">
                     <img
                       src="https://ghchart.rshah.org/40c463/FacundoZin"
@@ -386,31 +323,12 @@ export default function Home() {
         >
           <div className="space-y-12 sm:space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="text-3xl sm:text-4xl font-light">Educacion</h2>
-              <div className="text-sm text-muted-foreground font-mono">2022 — Presente</div>
+              <h2 className="text-3xl sm:text-4xl font-light">{t.educationTitle}</h2>
+              <div className="text-sm text-muted-foreground font-mono">{t.educationYears}</div>
             </div>
 
             <div className="space-y-8 sm:space-y-12">
-              {[
-                {
-                  period: "2024 — 2026",
-                  degree: "Tecnicatura Universitaria en Programacion",
-                  institution: "Universidad Tecnologica Nacional",
-                  location: "San Francisco, Cordoba",
-                  status: "Completado",
-                  description:
-                    "Formacion tecnica universitaria con enfasis en desarrollo de software, bases de datos, arquitectura de sistemas y metodologias de desarrollo. Actualmente realizando el trabajo final integrador de la carrera",
-                },
-                {
-                  period: "Presente",
-                  degree: "Ingenieria en Sistemas",
-                  institution: "Universidad Tecnologica Nacional",
-                  location: "San Francisco, Cordoba",
-                  status: "En curso",
-                  description:
-                    "Carrera universitaria con enfoque en el diseño, desarrollo y gestion de sistemas de informacion. Integrando conocimientos de organizacion y negocios con arquitectura de software, bases de datos, inteligencia artificial y metodologias de desarrollo.",
-                },
-              ].map((item, index) => (
+              {t.education.map((item, index) => (
                 <div
                   key={index}
                   className="group grid lg:grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-8 border-b border-border/50 hover:border-border transition-colors duration-500"
@@ -421,7 +339,7 @@ export default function Home() {
                     </div>
                     <div
                       className={`text-xs font-mono uppercase tracking-wider ${
-                        item.status === "En curso"
+                        item.status === t.inProgress
                           ? "text-green-500"
                           : "text-muted-foreground/60"
                       }`}
@@ -467,39 +385,10 @@ export default function Home() {
           className="min-h-screen py-20 sm:py-32 opacity-0"
         >
           <div className="space-y-12 sm:space-y-16">
-            <h2 className="text-3xl sm:text-4xl font-light">Publicaciones</h2>
+            <h2 className="text-3xl sm:text-4xl font-light">{t.postsTitle}</h2>
 
             <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
-              {[
-                {
-                  title: "Arquitectura Multi-tenant en SaaS: ¿Aislamiento por Software o por Infraestructura?",
-                  excerpt: "Una decisión de arquitectura clave en ASOCIARG fue cómo diseñar el multi-tenancy. Analizo las ventajas y desventajas de las distintas estrategias de aislamiento de datos.",
-                  date: "Hace 1 hora",
-                  readTime: "3 min",
-                  link: "https://www.linkedin.com/posts/facundozin_softwarearchitecture-multitenant-saas-share-7484280636321513472-GbNW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEA9M5sBICaPx3E6MWfqH_76HBjiVPDXzPM",
-                },
-                {
-                  title: "Gentle AI: Potenciando el Desarrollo Asistido por Agentes de IA",
-                  excerpt: "Descubrí cómo estructurar y potenciar el flujo de desarrollo con agentes de IA usando Gentle AI, Spec-Driven Development (SDD), Engram y CodeGraph.",
-                  date: "Hace 4 días",
-                  readTime: "4 min",
-                  link: "https://www.linkedin.com/feed/update/urn:li:activity:7483529244657061888/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEA9M5sBICaPx3E6MWfqH_76HBjiVPDXzPM",
-                },
-                {
-                  title: "Integración automática con Mercado Pago dentro de ASOCIARG",
-                  excerpt: "Implementamos el flujo OAuth de Mercado Pago para lograr una vinculación de cuentas al instante, eliminando configuraciones manuales complejas para los usuarios.",
-                  date: "Hace 2 meses",
-                  readTime: "2 min",
-                  link: "https://www.linkedin.com/posts/asociarg_mercadopago-fintech-asociarg-ugcPost-7452339909484322816-B-vy?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEA9M5sBICaPx3E6MWfqH_76HBjiVPDXzPM",
-                },
-                {
-                  title: "El camino de seguir actualizando e impulsando ASOCIARG",
-                  excerpt: "Emprender en tecnología es aceptar que nada está terminado. Comparto mis aprendizajes y la convicción detrás de la evolución de esta plataforma para instituciones civiles.",
-                  date: "Hace 4 meses",
-                  readTime: "2 min",
-                  link: "https://www.linkedin.com/posts/facundozin_saas-startups-construyendo-ugcPost-7438335200511737856-SRqx/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEA9M5sBICaPx3E6MWfqH_76HBjiVPDXzPM",
-                },
-              ].map((post, index) => (
+              {t.posts.map((post, index) => (
                 <Link
                   href={post.link}
                   target="_blank"
@@ -520,7 +409,7 @@ export default function Home() {
                     <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
 
                     <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      <span>Leer en LinkedIn</span>
+                      <span>{t.readOnLinkedIn}</span>
                       <svg
                         className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
                         fill="none"
@@ -545,11 +434,11 @@ export default function Home() {
         <section id="connect" ref={(el) => (sectionsRef.current[4] = el)} className="py-20 sm:py-32 opacity-0">
           <div className="grid lg:grid-cols-2 gap-12 sm:gap-16">
             <div className="space-y-6 sm:space-y-8">
-              <h2 className="text-3xl sm:text-4xl font-light">Hablemos</h2>
+              <h2 className="text-3xl sm:text-4xl font-light">{t.letsTalk}</h2>
 
               <div className="space-y-6">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Abierto a nuevas oportunidades, proyectos y conversaciones.
+                  {t.openToOpportunities}
                 </p>
 
                 <div className="space-y-4">
@@ -572,7 +461,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-6 sm:space-y-8">
-              <div className="text-sm text-muted-foreground font-mono">ENCUENTRAME EN</div>
+              <div className="text-sm text-muted-foreground font-mono">{t.findMeOn}</div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* GitHub */}
@@ -667,8 +556,8 @@ export default function Home() {
         <footer className="py-12 sm:py-16 border-t border-border">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8">
             <div className="space-y-2">
-              <div className="text-sm text-muted-foreground">© 2026 Facundo Zin. Todos los derechos reservados.</div>
-              <div className="text-xs text-muted-foreground">Diseñado y desarrollado por Facundo Zin</div>
+              <div className="text-sm text-muted-foreground">{t.footerRights}</div>
+              <div className="text-xs text-muted-foreground">{t.footerDesigned}</div>
             </div>
 
             <div className="flex items-center gap-4">
@@ -699,6 +588,8 @@ export default function Home() {
                   </svg>
                 )}
               </button>
+
+              <LanguageToggle />
 
               <button className="group p-3 rounded-lg border border-border hover:border-muted-foreground/50 transition-all duration-300">
                 <svg
