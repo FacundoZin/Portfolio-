@@ -1,4 +1,4 @@
-export type Locale = "es" | "en";
+﻿export type Locale = "es" | "en";
 
 export interface LinkField {
   url: string
@@ -14,6 +14,7 @@ export interface ExperienceItem {
   description: string
   tech: readonly string[]
   link?: LinkField
+  image?: string
 }
 
 export interface EducationItem {
@@ -110,6 +111,7 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         description:
           "Lidero el ciclo de vida completo de proyectos: desde el relevamiento hasta producción. Diseño arquitecturas modulares con DDD, implemento CI/CD con Docker y GitHub Actions, y aplico metodologías AINative como SDD para acelerar el desarrollo sin comprometer la calidad.",
         tech: ["C#", ".NET", "Docker", "GitHub Actions", "DDD", "SDD"],
+        image: "/LogoSyntrax.png",
       },
       {
         year: "2025",
@@ -119,6 +121,7 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         description:
           "Diseñé y desarrollé agentes de IA para automatización de flujos productivos con n8n. Implementé bases de datos vectoriales (Pinecone), ingeniería avanzada de prompts y flujos integrados con webhooks, Firestore y cloud functions.",
         tech: ["n8n", "Pinecone", "LLMs", "Prompt Engineering", "RAG"],
+        image: "/ssiTechnologies.jpg",
       },
       {
         year: "2025",
@@ -128,6 +131,7 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         description:
           "Desarrollé un sistema web para la gestión integral de convenios institucionales. Relevé requisitos con stakeholders, implementé gestión documental, alertas de vencimiento y flujos de actualización de datos.",
         tech: ["TypeScript", "NestJS", "React", "PostgreSQL"],
+        image: "/imagenUTN.jpg",
       },
       {
         year: "2025",
@@ -138,6 +142,7 @@ const dictionaries: Record<Locale, DictionaryFields> = {
           "Plataforma para la gestión integral de asociaciones civiles. Módulos de socios, viajes, cobros, reservas, portal de pagos e integración con Mercado Pago, WhatsApp y ARCA. Arquitectura monolítica y modular lista para deploy en VPS con Docker.",
         tech: ["C#", ".NET", "DDD", "Docker", "Mercado Pago", "Multi-tenant"],
         link: { url: "https://www.asociarg.cloud/", label: "Sitio Web", type: "external" },
+        image: "/iconoasociarg.png",
       },
       {
         year: "2025",
@@ -265,6 +270,7 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         description:
           "I lead the complete project lifecycle: from requirements gathering to production. I design modular architectures with DDD, implement CI/CD with Docker and GitHub Actions, and apply AINative methodologies like SDD to accelerate development without compromising quality.",
         tech: ["C#", ".NET", "Docker", "GitHub Actions", "DDD", "SDD"],
+        image: "/LogoSyntrax.png",
       },
       {
         year: "2025",
@@ -274,6 +280,7 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         description:
           "Designed and developed AI agents for productive workflow automation with n8n. Implemented vector databases (Pinecone), advanced prompt engineering and integrated flows with webhooks, Firestore and cloud functions.",
         tech: ["n8n", "Pinecone", "LLMs", "Prompt Engineering", "RAG"],
+        image: "/ssiTechnologies.jpg",
       },
       {
         year: "2025",
@@ -283,6 +290,7 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         description:
           "Developed a web system for comprehensive management of institutional agreements. Gathered requirements with stakeholders, implemented document management, expiration alerts and data update workflows.",
         tech: ["TypeScript", "NestJS", "React", "PostgreSQL"],
+        image: "/imagenUTN.jpg",
       },
       {
         year: "2025",
@@ -293,6 +301,7 @@ const dictionaries: Record<Locale, DictionaryFields> = {
           "Platform for comprehensive management of civil associations. Modules for members, trips, payments, bookings, payment portal and integration with Mercado Pago, WhatsApp and ARCA. Monolithic and modular architecture ready for VPS deployment with Docker.",
         tech: ["C#", ".NET", "DDD", "Docker", "Mercado Pago", "Multi-tenant"],
         link: { url: "https://www.asociarg.cloud/", label: "Website", type: "external" },
+        image: "/iconoasociarg.png",
       },
       {
         year: "2025",

@@ -236,6 +236,18 @@ export default function Home() {
                       <div className="text-muted-foreground">{item.company}</div>
                     </div>
                     <p className="text-muted-foreground leading-relaxed max-w-lg">{item.description}</p>
+                    {item.image && (
+                      <div className="flex flex-wrap gap-2 pt-1">
+                        {item.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                     {item.link && (
                       <div className="pt-1">
                         <Link
@@ -256,16 +268,27 @@ export default function Home() {
                   </div>
 
 
-                  <div className="lg:col-span-4 flex flex-wrap gap-2 lg:justify-end mt-2 lg:mt-0 content-start">
-                    {item.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  {item.image ? (
+                    <div className="lg:col-span-4 flex items-start lg:justify-end mt-4 lg:mt-0">
+                      <img
+                        src={item.image}
+                        alt={item.role}
+                        className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border border-border/50 object-contain select-none pointer-events-none"
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : (
+                    <div className="lg:col-span-4 flex flex-wrap gap-2 lg:justify-end mt-2 lg:mt-0 content-start">
+                      {item.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
