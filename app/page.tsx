@@ -7,6 +7,8 @@ import Terminal from "../components/Terminal"
 import LanguageToggle from "../components/LanguageToggle"
 import { useLanguage } from "../lib/language-context"
 import TechTicker from "../components/TechTicker"
+import { GitHubContributions } from "../components/GitHubContributions"
+import { GitHubActivity } from "../components/GitHubActivity"
 
 
 export default function Home() {
@@ -309,16 +311,16 @@ export default function Home() {
 
               <div className="space-y-6">
                 {/* Calendario de contribuciones (cuadraditos) */}
-                <div className="p-6 border border-border rounded-lg bg-muted/5 space-y-4">
-                  <div className="text-sm font-mono text-muted-foreground">{t.contributions}</div>
-                  <div className="w-full overflow-x-auto pb-2 scrollbar-thin">
-                    <img
-                      src="https://ghchart.rshah.org/40c463/FacundoZin"
-                      alt="GitHub Contributions Calendar"
-                      className="min-w-[700px] w-full"
-                    />
+                  <div className="p-6 border border-border rounded-lg bg-muted/5 space-y-4">
+                    <div className="text-sm font-mono text-muted-foreground">{t.contributions}</div>
+                    <GitHubContributions username="FacundoZin" />
                   </div>
-                </div>
+
+                  {/* Actividad reciente */}
+                  <div className="p-6 border border-border rounded-lg bg-muted/5 space-y-4">
+                    <div className="text-sm font-mono text-muted-foreground">{t.recentActivity}</div>
+                    <GitHubActivity username="FacundoZin" />
+                  </div>
 
                 {/* Grid de Estadísticas */}
                 <div className="grid sm:grid-cols-2 gap-4">

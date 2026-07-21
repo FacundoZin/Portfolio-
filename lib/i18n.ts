@@ -59,6 +59,7 @@ interface DictionaryFields {
   githubActivity: string
   viewProfile: string
   contributions: string
+  recentActivity: string
   educationTitle: string
   educationYears: string
   completed: string
@@ -168,6 +169,7 @@ const dictionaries: Record<Locale, DictionaryFields> = {
     githubActivity: "Actividad en GitHub",
     viewProfile: "VER PERFIL →",
     contributions: "Contribuciones",
+    recentActivity: "Actividad Reciente",
     educationTitle: "Educación",
     educationYears: "2022 — Presente",
     completed: "Completado",
@@ -327,6 +329,7 @@ const dictionaries: Record<Locale, DictionaryFields> = {
     githubActivity: "GitHub Activity",
     viewProfile: "VIEW PROFILE →",
     contributions: "Contributions",
+    recentActivity: "Recent Activity",
     educationTitle: "Education",
     educationYears: "2022 — Present",
     completed: "Completed",
