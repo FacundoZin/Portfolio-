@@ -1,84 +1,84 @@
 ﻿export type Locale = "es" | "en";
 
 export interface LinkField {
-  url: string
-  label: string
-  type: "github" | "external"
+  url: string;
+  label: string;
+  type: "github" | "external";
 }
 
 export interface ExperienceItem {
-  year: string
-  role: string
-  company: string
-  type: "employment" | "project"
-  description: string
-  tech: readonly string[]
-  link?: LinkField
-  image?: string
+  year: string;
+  role: string;
+  company: string;
+  type: "employment" | "project";
+  description: string;
+  tech: readonly string[];
+  link?: LinkField;
+  image?: string;
 }
 
 export interface EducationItem {
-  period: string
-  degree: string
-  institution: string
-  location: string
-  status: string
-  description: string
+  period: string;
+  degree: string;
+  institution: string;
+  location: string;
+  status: string;
+  description: string;
 }
 
 export interface PostItem {
-  title: string
-  excerpt: string
-  date: string
-  readTime: string
-  link: string
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  link: string;
 }
 
 interface DictionaryFields {
-  portfolio: string
-  subtitle: string
-  scalable: string
-  llms: string
-  llmsHighlight: string
-  andBuild: string
-  enterprise: string
-  activeSearch: string
-  country: string
-  downloadCV: string
-  downloadCVEN: string
-  currently: string
-  softwareEngineer: string
-  currentCompany: string
-  present: string
-  stack: string
-  experienceTitle: string
-  experienceYears: string
-  employment: string
-  project: string
-  experiences: readonly ExperienceItem[]
-  githubActivity: string
-  viewProfile: string
-  contributions: string
-  recentActivity: string
-  educationTitle: string
-  educationYears: string
-  completed: string
-  inProgress: string
-  education: readonly EducationItem[]
-  postsTitle: string
-  posts: readonly PostItem[]
-  readOnLinkedIn: string
-  letsTalk: string
-  openToOpportunities: string
-  findMeOn: string
-  footerRights: string
-  footerDesigned: string
-  aiNative: string
-  terminalTooltip: string
-  terminalClickLabel: string
-  terminalWelcome1: string
-  terminalWelcome2: string
-  terminalNotFound: string
+  portfolio: string;
+  subtitle: string;
+  scalable: string;
+  llms: string;
+  llmsHighlight: string;
+  andBuild: string;
+  enterprise: string;
+  activeSearch: string;
+  country: string;
+  downloadCV: string;
+  downloadCVEN: string;
+  currently: string;
+  softwareEngineer: string;
+  currentCompany: string;
+  present: string;
+  stack: string;
+  experienceTitle: string;
+  experienceYears: string;
+  employment: string;
+  project: string;
+  experiences: readonly ExperienceItem[];
+  githubActivity: string;
+  viewProfile: string;
+  contributions: string;
+  recentActivity: string;
+  educationTitle: string;
+  educationYears: string;
+  completed: string;
+  inProgress: string;
+  education: readonly EducationItem[];
+  postsTitle: string;
+  posts: readonly PostItem[];
+  readOnLinkedIn: string;
+  letsTalk: string;
+  openToOpportunities: string;
+  findMeOn: string;
+  footerRights: string;
+  footerDesigned: string;
+  aiNative: string;
+  terminalTooltip: string;
+  terminalClickLabel: string;
+  terminalWelcome1: string;
+  terminalWelcome2: string;
+  terminalNotFound: string;
 }
 
 const dictionaries: Record<Locale, DictionaryFields> = {
@@ -137,12 +137,16 @@ const dictionaries: Record<Locale, DictionaryFields> = {
       {
         year: "2025",
         role: "ASOCIARG",
-        company: "Proyecto personal",
+        company: "Producto SaaS",
         type: "project",
         description:
           "Plataforma para la gestión integral de asociaciones civiles. Módulos de socios, viajes, cobros, reservas, portal de pagos e integración con Mercado Pago, WhatsApp y ARCA. Arquitectura monolítica y modular lista para deploy en VPS con Docker.",
         tech: ["C#", ".NET", "DDD", "Docker", "Mercado Pago", "Multi-tenant"],
-        link: { url: "https://www.asociarg.cloud/", label: "Sitio Web", type: "external" },
+        link: {
+          url: "https://www.asociarg.cloud/",
+          label: "Sitio Web",
+          type: "external",
+        },
         image: "/iconoasociarg.png",
       },
       {
@@ -152,8 +156,19 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         type: "project",
         description:
           "Diseñé e implementé una arquitectura multi-client y persistencia en base de datos para este middleware de facturación de ARCA. Reemplacé el almacenamiento de certificados en firestore por PostgreSQL con cifrado para claves privadas, y refactoricé los endpoints para la resolución dinámica de credenciales por CUIT.",
-        tech: ["Python", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker", "Cryptography"],
-        link: { url: "https://github.com/FacundoZin/AFRelay", label: "GitHub", type: "github" },
+        tech: [
+          "Python",
+          "PostgreSQL",
+          "SQLAlchemy",
+          "Alembic",
+          "Docker",
+          "Cryptography",
+        ],
+        link: {
+          url: "https://github.com/FacundoZin/AFRelay",
+          label: "GitHub",
+          type: "github",
+        },
       },
       {
         year: "2024",
@@ -163,7 +178,11 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         description:
           "Backend monolítico y modular para la materia Metodología de Sistemas 2. Incluye autenticación, roles, gestión de restaurantes, pedidos, carrito y soporte. Documentado con diagramas UML.",
         tech: ["TypeScript", "NestJS", "PostgreSQL", "JWT", "UML"],
-        link: { url: "https://github.com/FacundoZin/TP-Rappi-Metodolog-aDeSistemas-", label: "GitHub", type: "github" },
+        link: {
+          url: "https://github.com/FacundoZin/TP-Rappi-Metodolog-aDeSistemas-",
+          label: "GitHub",
+          type: "github",
+        },
       },
     ],
     githubActivity: "Actividad en GitHub",
@@ -197,7 +216,8 @@ const dictionaries: Record<Locale, DictionaryFields> = {
     postsTitle: "Publicaciones",
     posts: [
       {
-        title: "Arquitectura Multi-tenant en SaaS: ¿Aislamiento por Software o por Infraestructura?",
+        title:
+          "Arquitectura Multi-tenant en SaaS: ¿Aislamiento por Software o por Infraestructura?",
         excerpt:
           "Una decisión de arquitectura clave en ASOCIARG fue cómo diseñar el multi-tenancy. Analizo las ventajas y desventajas de las distintas estrategias de aislamiento de datos.",
         date: "Hace 1 hora",
@@ -205,7 +225,8 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         link: "https://www.linkedin.com/posts/facundozin_softwarearchitecture-multitenant-saas-share-7484280636321513472-GbNW/",
       },
       {
-        title: "Gentle AI: Potenciando el Desarrollo Asistido por Agentes de IA",
+        title:
+          "Gentle AI: Potenciando el Desarrollo Asistido por Agentes de IA",
         excerpt:
           "Descubrí cómo estructurar y potenciar el flujo de desarrollo con agentes de IA usando Gentle AI, Spec-Driven Development (SDD), Engram y CodeGraph.",
         date: "Hace 4 días",
@@ -231,7 +252,8 @@ const dictionaries: Record<Locale, DictionaryFields> = {
     ],
     readOnLinkedIn: "Leer en LinkedIn",
     letsTalk: "Hablemos",
-    openToOpportunities: "Abierto a nuevas oportunidades, proyectos y conversaciones.",
+    openToOpportunities:
+      "Abierto a nuevas oportunidades, proyectos y conversaciones.",
     findMeOn: "ENCUENTRAME EN",
     footerRights: "© 2026 Facundo Zin. Todos los derechos reservados.",
     footerDesigned: "Diseñado y desarrollado por Facundo Zin",
@@ -240,7 +262,8 @@ const dictionaries: Record<Locale, DictionaryFields> = {
     terminalClickLabel: "Clickeá:",
     terminalWelcome1: "Bienvenido al shell interactivo de Facundo Zin.",
     terminalWelcome2: "Escribí 'help' para ver los comandos disponibles.",
-    terminalNotFound: "comando no encontrado: {cmd}. Escribí 'help' para más opciones.",
+    terminalNotFound:
+      "comando no encontrado: {cmd}. Escribí 'help' para más opciones.",
   },
   en: {
     portfolio: "PORTFOLIO / 2026",
@@ -297,12 +320,16 @@ const dictionaries: Record<Locale, DictionaryFields> = {
       {
         year: "2025",
         role: "ASOCIARG",
-        company: "Personal project",
+        company: "SaaS Product",
         type: "project",
         description:
           "Platform for comprehensive management of civil associations. Modules for members, trips, payments, bookings, payment portal and integration with Mercado Pago, WhatsApp and ARCA. Monolithic and modular architecture ready for VPS deployment with Docker.",
         tech: ["C#", ".NET", "DDD", "Docker", "Mercado Pago", "Multi-tenant"],
-        link: { url: "https://www.asociarg.cloud/", label: "Website", type: "external" },
+        link: {
+          url: "https://www.asociarg.cloud/",
+          label: "Website",
+          type: "external",
+        },
         image: "/iconoasociarg.png",
       },
       {
@@ -312,8 +339,19 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         type: "project",
         description:
           "Designed and implemented a multi-client architecture and database persistence for this ARCA billing middleware. Replaced certificate storage in Firestore with PostgreSQL with encryption for private keys, and refactored endpoints for dynamic credential resolution by CUIT.",
-        tech: ["Python", "PostgreSQL", "SQLAlchemy", "Alembic", "Docker", "Cryptography"],
-        link: { url: "https://github.com/FacundoZin/AFRelay", label: "GitHub", type: "github" },
+        tech: [
+          "Python",
+          "PostgreSQL",
+          "SQLAlchemy",
+          "Alembic",
+          "Docker",
+          "Cryptography",
+        ],
+        link: {
+          url: "https://github.com/FacundoZin/AFRelay",
+          label: "GitHub",
+          type: "github",
+        },
       },
       {
         year: "2024",
@@ -323,7 +361,11 @@ const dictionaries: Record<Locale, DictionaryFields> = {
         description:
           "Modular monolithic backend for the Methodology of Systems 2 course. Includes authentication, roles, restaurant management, orders, cart and support. Documented with UML diagrams.",
         tech: ["TypeScript", "NestJS", "PostgreSQL", "JWT", "UML"],
-        link: { url: "https://github.com/FacundoZin/TP-Rappi-Metodolog-aDeSistemas-", label: "GitHub", type: "github" },
+        link: {
+          url: "https://github.com/FacundoZin/TP-Rappi-Metodolog-aDeSistemas-",
+          label: "GitHub",
+          type: "github",
+        },
       },
     ],
     githubActivity: "GitHub Activity",
@@ -357,7 +399,8 @@ const dictionaries: Record<Locale, DictionaryFields> = {
     postsTitle: "Publications",
     posts: [
       {
-        title: "Multi-tenant Architecture in SaaS: Software or Infrastructure Isolation?",
+        title:
+          "Multi-tenant Architecture in SaaS: Software or Infrastructure Isolation?",
         excerpt:
           "A key architecture decision in ASOCIARG was how to design multi-tenancy. I analyze the advantages and disadvantages of different data isolation strategies.",
         date: "1 hour ago",
@@ -391,7 +434,8 @@ const dictionaries: Record<Locale, DictionaryFields> = {
     ],
     readOnLinkedIn: "Read on LinkedIn",
     letsTalk: "Let's Talk",
-    openToOpportunities: "Open to new opportunities, projects and conversations.",
+    openToOpportunities:
+      "Open to new opportunities, projects and conversations.",
     findMeOn: "FIND ME ON",
     footerRights: "© 2026 Facundo Zin. All rights reserved.",
     footerDesigned: "Designed and developed by Facundo Zin",
@@ -402,10 +446,10 @@ const dictionaries: Record<Locale, DictionaryFields> = {
     terminalWelcome2: "Type 'help' to see all available commands.",
     terminalNotFound: "command not found: {cmd}. Type 'help' for options.",
   },
-}
+};
 
-export type Dictionary = DictionaryFields
+export type Dictionary = DictionaryFields;
 
 export function getDictionary(locale: Locale): Dictionary {
-  return dictionaries[locale]
+  return dictionaries[locale];
 }
